@@ -47,14 +47,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.POST, "/employeeManagement/addSingleEmployee", "/employeeManagement/addAllEmployees","/employeeManagement/addSingleRole","/employeeManagement/addAllRoles","/employeeManagement/addSingleUser","/employeeManagement/addAllUsers").hasAuthority("ADMIN")
 				.antMatchers(HttpMethod.DELETE, "/employeeManagement/deleteEmployeeById/*").hasAuthority("ADMIN")
 				.antMatchers(HttpMethod.PUT,"/employeeManagement/updateEmployeeDetails").hasAnyAuthority("ADMIN")
-				.antMatchers(HttpMethod.GET, "/employees/*").hasAnyAuthority("USER","ADMIN")
+				.antMatchers(HttpMethod.GET, "/employeeManagement/*").hasAnyAuthority("USER","ADMIN")
 				.anyRequest().authenticated().and().httpBasic()
 				.and()
-	            //.formLogin().loginProcessingUrl("/login").successForwardUrl("http://localhost:8080/swagger-ui.html#/")
+	            .formLogin()//.loginProcessingUrl("/login").successForwardUrl("http://localhost:8080/swagger-ui.html#/")
 	            //.and()
-	            //.logout().logoutSuccessUrl("/login").permitAll()
+	            //.logout()//.logoutSuccessUrl("/login")//.permitAll()
 	            //.and()
-	            .exceptionHandling().accessDeniedPage("/student/403")
+	            //.exceptionHandling().accessDeniedPage("/student/403")
 				.and().cors().and().csrf().disable();
 	}
 
